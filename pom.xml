@@ -10,16 +10,10 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <slf4j.version>1.6.4</slf4j.version>
-        <!--<drools.version>6.1.0.Final</drools.version>-->
-        <!--<jbpm.version>6.1.0.Final</jbpm.version>-->
-        <!--<hibernate.version>4.2.0.Final</hibernate.version>-->
-        <!--<hibernate.core.version>4.2.0.Final</hibernate.core.version>-->
-        <!--<jboss.javaee.version>1.0.0.Final</jboss.javaee.version>-->
-        <!--<logback.version>1.0.9</logback.version>-->
-        <!--<h2.version>1.3.161</h2.version>-->
-        <!--<btm.version>3.0.0-SNAPSHOT</btm.version>-->
-        <!--<gxt.version>3.1.1</gxt.version>-->
-        <!--<gwt.version>2.6.1</gwt.version>-->
+        <activity.version>5.17.0</activity.version>
+        <spring.version>4.1.1.RELEASE</spring.version>
+        <spring.boot.version>1.2.2.RELEASE</spring.boot.version>
+        <mysql.version>5.1.33</mysql.version>
 
     </properties>
 
@@ -33,19 +27,26 @@
                 <enabled>true</enabled>
             </releases>
         </repository>
+        <repository>
+            <id>Alfresco Maven Repository</id>
+            <url>https://maven.alfresco.com/nexus/content/groups/public/</url>
+        </repository>
     </repositories>
 
     <modules>
         <module>ActiveCRMWebApp</module>
+        <module>ActiveCRMBPM</module>
     </modules>
 
     <dependencies>
+
+        <!-- common -->
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
@@ -53,9 +54,10 @@
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-jdk14</artifactId>
+            <artifactId>jcl-over-slf4j</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
@@ -67,6 +69,83 @@
             <artifactId>javassist</artifactId>
             <version>3.4.GA</version>
         </dependency>
+
+
+        <!-- activity -->
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-engine</artifactId>
+            <version>${activity.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-beans</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>spring-boot-starter-basic</artifactId>
+            <version>${activity.version}</version>
+        </dependency>
+<!--        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>-->
+
+
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- database -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+
     </dependencies>
 
 
