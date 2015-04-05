@@ -20,12 +20,18 @@ public class ProcessService {
 
     @Transactional
     public void startProcess() {
-        runtimeService.startProcessInstanceByKey("oneTaskProcess");
+        runtimeService.startProcessInstanceByKey( "TestProcess");
     }
 
     @Transactional
     public List<Task> getTasks(String assignee) {
         return taskService.createTaskQuery().taskAssignee(assignee).list();
+    }
+
+    @Transactional
+    public void completeTask( String taskId )
+    {
+        taskService.complete( taskId );
     }
 
 }

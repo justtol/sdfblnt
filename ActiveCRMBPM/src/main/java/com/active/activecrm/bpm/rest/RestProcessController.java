@@ -3,11 +3,9 @@ package com.active.activecrm.bpm.rest;
 import com.active.activecrm.bpm.mgmt.ProcessService;
 import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +18,8 @@ public class RestProcessController
     @Autowired
     private ProcessService processService;
 
-    @RequestMapping( value = "/process", method = RequestMethod.POST )
+    @RequestMapping( value = "/process", method = RequestMethod.GET )
+    @ResponseStatus(value = HttpStatus.OK)
     public void startProcessInstance()
     {
         processService.startProcess();
@@ -37,6 +36,15 @@ public class RestProcessController
         }
         return dtos;
     }
+
+    @RequestMapping( value = "/completeTask", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE )
+    @ResponseStatus(value = HttpStatus.OK)
+    public void completeTask( @RequestParam String taskId )
+    {
+        processService.completeTask( taskId );
+    }
+
+
 
     static class TaskRepresentation
     {

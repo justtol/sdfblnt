@@ -11,7 +11,7 @@
     </appender>
 
     <appender name="default.file" class="org.apache.log4j.FileAppender">
-        <param name="file" value="${log}/active.log" />
+        <param name="file" value="active.log" />
         <param name="append" value="false" />
         <param name="threshold" value="debug" />
         <layout class="org.apache.log4j.PatternLayout">
@@ -20,7 +20,7 @@
     </appender>
 
     <root>
-        <priority value="info" />
+        <priority value="debug" />
         <appender-ref ref="default.console" />
         <appender-ref ref="default.file" />
     </root>
