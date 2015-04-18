@@ -7,9 +7,9 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>ActiveCRMWebApp</artifactId>
+    <artifactId>ActiveCRMManagement</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
 
 
@@ -20,19 +20,6 @@
             <artifactId>ActiveCRMData</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.active.crm</groupId>
-            <artifactId>ActiveCRMManagement</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.active.crm</groupId>
-            <artifactId>ActiveCRMBPM</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
     </dependencies>
 
 </project>
