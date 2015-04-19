@@ -5,14 +5,15 @@ package com.active.activecrm.data.entities.party; /*****************************
  ***********************************************************************/
 
 import com.active.activecrm.data.entities.BaseEntity;
+import com.active.activecrm.data.entities.dicts.PartyRole;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * отношение Party друг с другом
- *
- * @pdOid 1c4b88dc-456f-4557-932b-c74f78480bb9
  */
 
 @Entity
@@ -30,8 +31,15 @@ public class PartyRoleRel extends BaseEntity implements Serializable
      * Paryt Role code
      *
      */
+    /*@Column( name = "ROLE_CODE" )
+    public String roleCode;*/
+
+    @ManyToOne( fetch = FetchType.LAZY )
+    @JoinColumn( name = "ROLE_CODE", insertable = false, updatable = false )
+    private PartyRole partyRole;
+
     @Column( name = "ROLE_CODE" )
-    public String roleCode;
+    private String roleCode;
 
     /**
      * Код должности
@@ -39,25 +47,30 @@ public class PartyRoleRel extends BaseEntity implements Serializable
      todo change to code
      */
     @Column( name = "POSITION_CODE" )
-    public String positionCode;
+    private String positionCode;
 
     /**
      todo change to code
      */
     @Column( name = "GROUP_CODE" )
-    public String groupcode;
+    private String groupcode;
 
     /**
      * основнаЯ контакт из всех контактных лиц длЯ данной организации
      */
     @Column( name = "IS_PRIMARY" )
-    public String isPrimary;
+    private Boolean isPrimary;
 
-    /**
-     * @pdRoleInfo migr=no name=Party assc=partyRoleRelTo1 mult=0..1 side=A
-     */
-//    public Party party;
+    @ManyToOne( fetch = FetchType.LAZY )
+    @JoinColumn( name = "FROM_PARTY_ID" )
+    private Party fromParty;
 
+    @ManyToOne( fetch = FetchType.LAZY )
+    @JoinColumn( name = "TO_PARTY_ID" )
+    private Party toParty;
+
+    @OneToMany( fetch = FetchType.LAZY, mappedBy = "partyRoleRel" )
+    private Set<PartyRoleContactInfo> partyRoleContactInfos = new HashSet<>();
 
     @Override
     public Long getId()
@@ -69,6 +82,46 @@ public class PartyRoleRel extends BaseEntity implements Serializable
     public void setId( Long id )
     {
         this.id = id;
+    }
+
+    public Set< PartyRoleContactInfo > getPartyRoleContactInfos()
+    {
+        return partyRoleContactInfos;
+    }
+
+    public void setPartyRoleContactInfos( Set< PartyRoleContactInfo > partyRoleContactInfos )
+    {
+        this.partyRoleContactInfos = partyRoleContactInfos;
+    }
+
+    public PartyRole getPartyRole()
+    {
+        return partyRole;
+    }
+
+    public void setPartyRole( PartyRole partyRole )
+    {
+        this.partyRole = partyRole;
+    }
+
+    public Party getFromParty()
+    {
+        return fromParty;
+    }
+
+    public void setFromParty( Party fromParty )
+    {
+        this.fromParty = fromParty;
+    }
+
+    public Party getToParty()
+    {
+        return toParty;
+    }
+
+    public void setToParty( Party toParty )
+    {
+        this.toParty = toParty;
     }
 
     public String getRoleCode()
@@ -101,12 +154,12 @@ public class PartyRoleRel extends BaseEntity implements Serializable
         this.groupcode = groupcode;
     }
 
-    public String getIsPrimary()
+    public Boolean isPrimary()
     {
         return isPrimary;
     }
 
-    public void setIsPrimary( String isPrimary )
+    public void setIsPrimary( Boolean isPrimary )
     {
         this.isPrimary = isPrimary;
     }

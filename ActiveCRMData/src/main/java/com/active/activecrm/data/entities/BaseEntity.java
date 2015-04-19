@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+@MappedSuperclass
 public abstract class BaseEntity implements Serializable
 {
     @Column( name = "CREATE_DATE" )

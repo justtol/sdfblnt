@@ -1,12 +1,14 @@
 package com.active.activecrm.data.entities.party;
 
 import com.active.activecrm.data.entities.BaseEntity;
+import com.active.activecrm.data.entities.dicts.MarketingSegment;
+import com.active.activecrm.data.entities.dicts.Okved;
+import com.active.activecrm.data.entities.dicts.Opf;
+import com.active.activecrm.data.entities.dicts.PartyStatus;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @SequenceGenerator(name="partySeq", sequenceName="PARTY_SEQ")
@@ -21,6 +23,10 @@ public class Party extends BaseEntity implements Serializable
 
     @Column( name = "OPF_CODE" )
     private String opfCode;
+
+    @ManyToOne( fetch = FetchType.LAZY )
+    @JoinColumn( name = "OPF_CODE", insertable = false, updatable = false )
+    private Opf opf;
 
     /**
      * Название
@@ -57,6 +63,10 @@ public class Party extends BaseEntity implements Serializable
      */
     @Column( name = "STATUS_CODE" )
     private String statusCode;
+
+    @ManyToOne( fetch = FetchType.LAZY )
+    @JoinColumn( name = "STATUS_CODE", insertable = false, updatable = false )
+    private PartyStatus status;
 
     /**
      * Дата 1-го контакта с компанией
@@ -112,6 +122,10 @@ public class Party extends BaseEntity implements Serializable
      */
     @Column( name = "OKVED_CODE" )
     private String okvedCode;
+
+    @ManyToOne( fetch = FetchType.LAZY )
+    @JoinColumn( name = "OKVED_CODE", insertable = false, updatable = false )
+    private Okved okved;
 
     /**
      * Блок клиента
@@ -202,10 +216,12 @@ public class Party extends BaseEntity implements Serializable
     private String serviceBranchSrcCode;*/
 
 
-    /**
-     * TODO change to a link to dict
+    @Column( name = "MARKETING_SEGMENT_CODE" )
+    private String marketingSegmentCode;
 
-    private String marketingSegmentCode;*/
+    @ManyToOne( fetch = FetchType.LAZY )
+    @JoinColumn( name = "MARKETING_SEGMENT_CODE", insertable = false, updatable = false )
+    private MarketingSegment marketingSegment;
 
     /**
      * Приоритет кластера , который присвоен клиенту
@@ -250,6 +266,49 @@ public class Party extends BaseEntity implements Serializable
 
     //private List< PartyRoleRel > partyRoleRel;
 
+
+    @OneToMany( fetch = FetchType.LAZY, mappedBy = "fromParty" )
+    private Set<PartyRoleRel> fromPartyRoleRels = new HashSet<PartyRoleRel>();
+
+    @OneToMany( fetch = FetchType.LAZY, mappedBy = "toParty" )
+    private Set<PartyRoleRel> toPartyRoleRels = new HashSet<PartyRoleRel>();
+
+    @OneToMany( fetch = FetchType.LAZY, mappedBy = "party" )
+    private Set<Season> seasons = new HashSet<>();
+
+    @OneToMany( fetch = FetchType.LAZY, mappedBy = "party" )
+    private Set<PartyAddress> addresses = new HashSet<>();
+
+    public Set< PartyAddress > getAddresses()
+    {
+        return addresses;
+    }
+
+    public void setAddresses( Set< PartyAddress > addresses )
+    {
+        this.addresses = addresses;
+    }
+
+    public PartyStatus getStatus()
+    {
+        return status;
+    }
+
+    public void setStatus( PartyStatus status )
+    {
+        this.status = status;
+    }
+
+    public Okved getOkved()
+    {
+        return okved;
+    }
+
+    public void setOkved( Okved okved )
+    {
+        this.okved = okved;
+    }
+
     @Override
     public Long getId()
     {
@@ -260,6 +319,76 @@ public class Party extends BaseEntity implements Serializable
     public void setId( Long id )
     {
         this.id = id;
+    }
+
+    public Set< Season > getSeasons()
+    {
+        return seasons;
+    }
+
+    public void setSeasons( Set< Season > seasons )
+    {
+        this.seasons = seasons;
+    }
+
+    public String getMarketingSegmentCode()
+    {
+        return marketingSegmentCode;
+    }
+
+    public void setMarketingSegmentCode( String marketingSegmentCode )
+    {
+        this.marketingSegmentCode = marketingSegmentCode;
+    }
+
+    public MarketingSegment getMarketingSegment()
+    {
+        return marketingSegment;
+    }
+
+    public void setMarketingSegment( MarketingSegment marketingSegment )
+    {
+        this.marketingSegment = marketingSegment;
+    }
+
+    public Opf getOpf()
+    {
+        return opf;
+    }
+
+    public void setOpf( Opf opf )
+    {
+        this.opf = opf;
+    }
+
+    public Boolean isDisabled()
+    {
+        return isDisabled;
+    }
+
+    public Boolean isDuplicate()
+    {
+        return isDuplicate;
+    }
+
+    public Set< PartyRoleRel > getFromPartyRoleRels()
+    {
+        return fromPartyRoleRels;
+    }
+
+    public void setFromPartyRoleRels( Set< PartyRoleRel > fromPartyRoleRels )
+    {
+        this.fromPartyRoleRels = fromPartyRoleRels;
+    }
+
+    public Set< PartyRoleRel > getToPartyRoleRels()
+    {
+        return toPartyRoleRels;
+    }
+
+    public void setToPartyRoleRels( Set< PartyRoleRel > toPartyRoleRels )
+    {
+        this.toPartyRoleRels = toPartyRoleRels;
     }
 
     public String getOpfCode()
