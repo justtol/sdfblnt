@@ -2,6 +2,7 @@ package com.active.activecrm.data.entities.party;
 
 import com.active.activecrm.data.entities.BaseEntity;
 import com.active.activecrm.data.entities.dicts.AddressType;
+import com.active.activecrm.data.entities.dicts.City;
 import com.active.activecrm.data.entities.dicts.Country;
 import com.active.activecrm.data.entities.dicts.Region;
 
@@ -54,9 +55,9 @@ public class PartyAddress extends BaseEntity implements Serializable
     @Column( name = "CITY_CODE" )
     private String cityCode;
 
-//    @ManyToOne( fetch = FetchType.LAZY )
-//    @JoinColumn( name = "CITY_CODE", insertable = false, updatable = false )
-//    private City city;
+    @ManyToOne( fetch = FetchType.LAZY )
+    @JoinColumn( name = "CITY_CODE", insertable = false, updatable = false )
+    private City city;
 
     /**
      * регион

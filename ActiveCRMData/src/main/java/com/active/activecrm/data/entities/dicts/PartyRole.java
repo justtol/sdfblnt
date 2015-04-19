@@ -15,7 +15,7 @@ public class PartyRole extends BaseDictionary implements Serializable
 
    /** нельзЯ редактировать вручную только после предоставлениЯ новых документов */
    @Column( name = "IS_LOCKED" )
-   public Boolean isLocked;
+   private Boolean isLocked;
 
    @OneToMany( fetch = FetchType.LAZY, mappedBy = "partyRole" )
    private Set<PartyRoleRel > partyRoleRels = new HashSet<>();
