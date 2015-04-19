@@ -7,8 +7,17 @@
         <class>com.active.activecrm.data.entities.dicts.PartyRole</class>
         <class>com.active.activecrm.data.entities.party.PartyRoleRel</class>
         <class>com.active.activecrm.data.entities.party.PartyRoleContactInfo</class>
-        <class>com.active.activecrm.data.entities.party.Season</class>
+        <class>com.active.activecrm.data.entities.party.PartyAddress</class>
+        <class>com.active.activecrm.data.entities.party.PartySeason</class>
         <class>com.active.activecrm.data.entities.dicts.ContactInfoType</class>
+        <class>com.active.activecrm.data.entities.dicts.AddressType</class>
+        <class>com.active.activecrm.data.entities.dicts.City</class>
+        <class>com.active.activecrm.data.entities.dicts.Country</class>
+        <class>com.active.activecrm.data.entities.dicts.MarketingSegment</class>
+        <class>com.active.activecrm.data.entities.dicts.Okved</class>
+        <class>com.active.activecrm.data.entities.dicts.Opf</class>
+        <class>com.active.activecrm.data.entities.dicts.PartyStatus</class>
+        <class>com.active.activecrm.data.entities.dicts.Region</class>
 
         <properties>
             <property name="hibernate.max_fetch_depth" value="3"/>

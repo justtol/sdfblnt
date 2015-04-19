@@ -274,7 +274,7 @@ public class Party extends BaseEntity implements Serializable
     private Set<PartyRoleRel> toPartyRoleRels = new HashSet<PartyRoleRel>();
 
     @OneToMany( fetch = FetchType.LAZY, mappedBy = "party" )
-    private Set<Season> seasons = new HashSet<>();
+    private Set<PartySeason > seasons = new HashSet<>();
 
     @OneToMany( fetch = FetchType.LAZY, mappedBy = "party" )
     private Set<PartyAddress> addresses = new HashSet<>();
@@ -321,12 +321,12 @@ public class Party extends BaseEntity implements Serializable
         this.id = id;
     }
 
-    public Set< Season > getSeasons()
+    public Set< PartySeason > getSeasons()
     {
         return seasons;
     }
 
-    public void setSeasons( Set< Season > seasons )
+    public void setSeasons( Set< PartySeason > seasons )
     {
         this.seasons = seasons;
     }

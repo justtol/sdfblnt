@@ -10,13 +10,13 @@ import java.io.Serializable;
  * Сезонность бизнеса
  */
 @Entity
-@SequenceGenerator(name="seasonSeq", sequenceName="SEASON_SEQ")
-@Table( name = "SEASON" )
-public class Season extends BaseEntity implements Serializable
+@SequenceGenerator(name="partySeasonSeq", sequenceName="PARTY_SEASON_SEQ")
+@Table( name = "PARTY_SEASON" )
+public class PartySeason extends BaseEntity implements Serializable
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator="seasonSeq")
-    @Column( name = "SEASON_ID" )
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="partySeasonSeq")
+    @Column( name = "PARTY_SEASON_ID" )
     private Long id;
 
     /**

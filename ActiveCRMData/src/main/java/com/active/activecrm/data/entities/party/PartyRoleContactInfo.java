@@ -23,8 +23,8 @@ public class PartyRoleContactInfo extends BaseEntity implements Serializable
 {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator="partyRoleRelSeq")
-    @Column( name = "PARTY_ROLE_REL_ID" )
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="partyRoleContactInfoSeq")
+    @Column( name = "PARTY_ROLE_CONTACT_INFO_ID" )
     private Long id;
 
     /**

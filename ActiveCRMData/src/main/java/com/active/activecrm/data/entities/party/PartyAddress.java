@@ -75,7 +75,7 @@ public class PartyAddress extends BaseEntity implements Serializable
     private String countryCode;
 
     @ManyToOne( fetch = FetchType.LAZY )
-    @Column( name = "COUNTRY_CODE", insertable = false, updatable = false )
+    @JoinColumn( name = "COUNTRY_CODE", insertable = false, updatable = false )
     private Country country;
 
     /**
