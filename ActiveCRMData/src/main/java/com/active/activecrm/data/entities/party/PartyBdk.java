@@ -7,7 +7,7 @@ package com.active.activecrm.data.entities.party; /*****************************
 import java.util.*;
 
 /** БДК для Party
- * 
+ * @deprecated
  * @pdOid 8b90ee56-e45a-47f6-98ca-95cd95eebcbc */
 public class PartyBdk {
    /** @pdOid 0b966464-2a28-4134-8089-d6c7665e0440 */

@@ -7,8 +7,8 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table( name = "PRODUCT_STATUS" )
-public class ProductStatus extends BaseDictionary implements Serializable
+@Table( name = "PRODUCT_DESC_REL_TYPE" )
+public class ProductDescRelType extends BaseDictionary implements Serializable
 {
 
 }

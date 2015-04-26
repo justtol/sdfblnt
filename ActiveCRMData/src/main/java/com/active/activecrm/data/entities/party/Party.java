@@ -1,10 +1,8 @@
 package com.active.activecrm.data.entities.party;
 
 import com.active.activecrm.data.entities.BaseEntity;
-import com.active.activecrm.data.entities.dicts.MarketingSegment;
-import com.active.activecrm.data.entities.dicts.Okved;
-import com.active.activecrm.data.entities.dicts.Opf;
-import com.active.activecrm.data.entities.dicts.PartyStatus;
+import com.active.activecrm.data.entities.dicts.*;
+import com.active.activecrm.data.entities.products.ProductPartyRoleRel;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -43,7 +41,7 @@ public class Party extends BaseEntity implements Serializable
     /**
      * ИндустриЯ (fk)
      */
-    @Column( name = "INDUsTRY_CODE" )
+    @Column( name = "INDUSTRY_CODE" )
     private String industryCode;
     /**
      * ИНН
@@ -56,6 +54,10 @@ public class Party extends BaseEntity implements Serializable
      */
     @Column( name = "BUSINESS_TYPE_CODE" )
     private String businessTypeCode;
+
+    @ManyToOne( fetch = FetchType.LAZY )
+    @JoinColumn( name = "BUSINESS_TYPE_CODE", insertable = false, updatable = false )
+    private BusinessType businessType;
 
 
     /**
@@ -117,6 +119,10 @@ public class Party extends BaseEntity implements Serializable
     @Column( name = "CLUSTER_CODE" )
     private String clusterCode;
 
+    @ManyToOne
+    @JoinColumn( name = "CLUSTER_CODE", insertable = false, updatable = false )
+    private Cluster cluster;
+
     /**
      * ОКВЕД (fk)
      */
@@ -136,8 +142,12 @@ public class Party extends BaseEntity implements Serializable
     /**
      * код системы источника
      */
-    @Column( name = "SOURCE_SYSTEM" )
-    private String sourceSystem;
+    @Column( name = "SOURCE_SYSTEM_CODE" )
+    private String sourceSystemCode;
+
+    @ManyToOne( fetch = FetchType.LAZY )
+    @JoinColumn( name = "SOURCE_SYSTEM_CODE", insertable = false, updatable = false )
+    private SourceSystem sourceSystem;
 
     /**
      * id системы источника
@@ -145,10 +155,13 @@ public class Party extends BaseEntity implements Serializable
     @Column( name = "SOURCE_CODE" )
     private String sourceCode;
 
-    /**
-     * Код Источника контакта, наприме, БД SPARK
-    private String contactSourceCode;*/
+    /** Код Источника контакта, наприме, БД SPARK */
+    @Column( name = "CONTACT_SOURCE_CODE")
+    private String contactSourceCode;
 
+    @ManyToOne( fetch = FetchType.LAZY )
+    @JoinColumn( name = "CONTACT_SOURCE_CODE", insertable = false, updatable = false )
+    private SourceSystem contactSource;
 
     /**
      * url компании
@@ -196,6 +209,7 @@ public class Party extends BaseEntity implements Serializable
     private Date birthday;
 
     @Column( name = "OPEN_DATE" )
+    @Temporal( TemporalType.DATE )
     private Date openDate;
 
     @Column( name = "KPP" )
@@ -249,12 +263,6 @@ public class Party extends BaseEntity implements Serializable
     @Column( name = "IS_DUPLICATE" )
     private Boolean isDuplicate;
 
-    /** Вид бизнеса (fk) */
-    /**
-     * TODO change to a link to dict
-
-    private String businessTypeId;*/
-
     @Column( name = "DISABLE_REASON_CODE" )
     private String disableReasonCode;
 
@@ -278,6 +286,19 @@ public class Party extends BaseEntity implements Serializable
 
     @OneToMany( fetch = FetchType.LAZY, mappedBy = "party" )
     private Set<PartyAddress> addresses = new HashSet<>();
+
+    @OneToMany( fetch = FetchType.LAZY, mappedBy = "party" )
+    private Set<ProductPartyRoleRel> productPartyRoleRels = new HashSet<>();
+
+    public Set< ProductPartyRoleRel > getProductPartyRoleRels()
+    {
+        return productPartyRoleRels;
+    }
+
+    public void setProductPartyRoleRels( Set< ProductPartyRoleRel > productPartyRoleRels )
+    {
+        this.productPartyRoleRels = productPartyRoleRels;
+    }
 
     public Set< PartyAddress > getAddresses()
     {
@@ -561,14 +582,64 @@ public class Party extends BaseEntity implements Serializable
         this.blockCode = blockCode;
     }
 
-    public String getSourceSystem()
+    public BusinessType getBusinessType()
+    {
+        return businessType;
+    }
+
+    public void setBusinessType( BusinessType businessType )
+    {
+        this.businessType = businessType;
+    }
+
+    public Cluster getCluster()
+    {
+        return cluster;
+    }
+
+    public void setCluster( Cluster cluster )
+    {
+        this.cluster = cluster;
+    }
+
+    public String getSourceSystemCode()
+    {
+        return sourceSystemCode;
+    }
+
+    public void setSourceSystemCode( String sourceSystemCode )
+    {
+        this.sourceSystemCode = sourceSystemCode;
+    }
+
+    public SourceSystem getSourceSystem()
     {
         return sourceSystem;
     }
 
-    public void setSourceSystem( String sourceSystem )
+    public void setSourceSystem( SourceSystem sourceSystem )
     {
         this.sourceSystem = sourceSystem;
+    }
+
+    public String getContactSourceCode()
+    {
+        return contactSourceCode;
+    }
+
+    public void setContactSourceCode( String contactSourceCode )
+    {
+        this.contactSourceCode = contactSourceCode;
+    }
+
+    public SourceSystem getContactSource()
+    {
+        return contactSource;
+    }
+
+    public void setContactSource( SourceSystem contactSource )
+    {
+        this.contactSource = contactSource;
     }
 
     public String getSourceCode()

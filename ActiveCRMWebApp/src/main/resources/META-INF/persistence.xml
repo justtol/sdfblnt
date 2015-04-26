@@ -18,6 +18,23 @@
         <class>com.active.activecrm.data.entities.dicts.Opf</class>
         <class>com.active.activecrm.data.entities.dicts.PartyStatus</class>
         <class>com.active.activecrm.data.entities.dicts.Region</class>
+        <class>com.active.activecrm.data.entities.dicts.Cluster</class>
+        <class>com.active.activecrm.data.entities.dicts.SourceSystem</class>
+        <class>com.active.activecrm.data.entities.dicts.BusinessType</class>
+        <class>com.active.activecrm.data.entities.products.Product</class>
+        <class>com.active.activecrm.data.entities.products.ProductCaseRel</class>
+        <class>com.active.activecrm.data.entities.products.ProductDescRel</class>
+        <class>com.active.activecrm.data.entities.products.ProductDescRelType</class>
+        <class>com.active.activecrm.data.entities.products.ProductGroupType</class>
+        <class>com.active.activecrm.data.entities.products.ProductInterest</class>
+        <class>com.active.activecrm.data.entities.products.ProductDesc</class>
+        <class>com.active.activecrm.data.entities.products.FailureCause</class>
+        <class>com.active.activecrm.data.entities.products.ProductGroup</class>
+        <class>com.active.activecrm.data.entities.products.ProductGroupRel</class>
+        <class>com.active.activecrm.data.entities.products.ProductGroupType</class>
+        <class>com.active.activecrm.data.entities.products.ProductPartyRole</class>
+        <class>com.active.activecrm.data.entities.products.ProductPartyRoleRel</class>
+        <class>com.active.activecrm.data.entities.products.ProductStatus</class>
 
         <properties>
             <property name="hibernate.max_fetch_depth" value="3"/>
