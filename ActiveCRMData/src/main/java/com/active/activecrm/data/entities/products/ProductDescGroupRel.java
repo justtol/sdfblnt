@@ -9,24 +9,24 @@ import java.io.Serializable;
  * связь группа продуктов
  */
 @Entity
-@SequenceGenerator(name="productGroupRelSeq", sequenceName="PRODUCT_GROUP_REL_SEQ")
-@Table( name = "PRODUCT_GROUP_REL" )
-public class ProductGroupRel extends BaseEntity implements Serializable
+@SequenceGenerator(name="productDescGroupRelSeq", sequenceName="PRODUCT_DESC_GROUP_REL_SEQ")
+@Table( name = "PRODUCT_DESC_GROUP_REL" )
+public class ProductDescGroupRel extends BaseEntity implements Serializable
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator="productGroupRelSeq")
-    @Column( name = "PARTY_ID" )
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="productDescGroupRelSeq")
+    @Column( name = "PRODUCT_DESC_GROUP_REL_ID" )
     private Long id;
 
     /**
      * код группы
      */
-    @Column( name = "PRODUCT_GROUP_CODE" )
-    private String productGroupCode;
+    @Column( name = "PRODUCT_DESC_GROUP_CODE" )
+    private String productDescGroupCode;
 
     @ManyToOne( fetch = FetchType.LAZY )
-    @JoinColumn( name = "PRODUCT_GROUP_CODE", insertable = false, updatable = false )
-    private ProductGroup productGroup;
+    @JoinColumn( name = "PRODUCT_DESC_GROUP_CODE", insertable = false, updatable = false )
+    private ProductDescGroup productDescGroup;
 
     /**
      * продукт
@@ -50,24 +50,24 @@ public class ProductGroupRel extends BaseEntity implements Serializable
         this.id = id;
     }
 
-    public String getProductGroupCode()
+    public String getProductDescGroupCode()
     {
-        return productGroupCode;
+        return productDescGroupCode;
     }
 
-    public void setProductGroupCode( String productGroupCode )
+    public void setProductDescGroupCode( String productGroupCode )
     {
-        this.productGroupCode = productGroupCode;
+        this.productDescGroupCode = productGroupCode;
     }
 
-    public ProductGroup getProductGroup()
+    public ProductDescGroup getProductDescGroup()
     {
-        return productGroup;
+        return productDescGroup;
     }
 
-    public void setProductGroup( ProductGroup productGroup )
+    public void setProductDescGroup( ProductDescGroup productDescGroup )
     {
-        this.productGroup = productGroup;
+        this.productDescGroup = productDescGroup;
     }
 
     public String getProductDescCode()

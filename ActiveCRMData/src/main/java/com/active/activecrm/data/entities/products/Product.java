@@ -110,6 +110,19 @@ public class Product extends BaseEntity implements Serializable
    @OneToMany( fetch = FetchType.LAZY, mappedBy = "product" )
    private Set<ProductPartyRoleRel> productPartyRoleRels = new HashSet<>();
 
+   @OneToMany( fetch = FetchType.LAZY, mappedBy = "product" )
+   private Set<ProductFeatureValue> productFeatureValues = new HashSet<>();
+
+   public Set< ProductFeatureValue > getProductFeatureValues()
+   {
+      return productFeatureValues;
+   }
+
+   public void setProductFeatureValues( Set< ProductFeatureValue > productFeatureValues )
+   {
+      this.productFeatureValues = productFeatureValues;
+   }
+
    public ProductStatus getProductSatus()
    {
       return productSatus;

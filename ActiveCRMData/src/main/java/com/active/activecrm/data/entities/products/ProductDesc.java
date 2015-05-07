@@ -54,7 +54,7 @@ public class ProductDesc extends BaseDictionary implements Serializable
     private Boolean forceCheck;
 
     @OneToMany( fetch = FetchType.LAZY, mappedBy = "productDesc" )
-    private Set<ProductGroupRel> productGroupRels = new HashSet<>();
+    private Set<ProductDescGroupRel > productDescGroupRels = new HashSet<>();
 
     @OneToMany( fetch = FetchType.LAZY, mappedBy = "productDesc" )
     private Set<ProductInterest> productInterests = new HashSet<>();
@@ -68,14 +68,14 @@ public class ProductDesc extends BaseDictionary implements Serializable
     @OneToMany( fetch = FetchType.LAZY, mappedBy = "productDesc" )
     private Set<Product> products = new HashSet<>();
 
-    public Set< ProductGroupRel > getProductGroupRels()
+    public Set< ProductDescGroupRel > getProductDescGroupRels()
     {
-        return productGroupRels;
+        return productDescGroupRels;
     }
 
-    public void setProductGroupRels( Set< ProductGroupRel > productGroupRels )
+    public void setProductDescGroupRels( Set< ProductDescGroupRel > productDescGroupRels )
     {
-        this.productGroupRels = productGroupRels;
+        this.productDescGroupRels = productDescGroupRels;
     }
 
     public Set< ProductInterest > getProductInterests()

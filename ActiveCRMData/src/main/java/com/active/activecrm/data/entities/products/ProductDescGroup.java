@@ -9,8 +9,8 @@ import java.io.Serializable;
  * группа продуктов
  */
 @Entity
-@Table( name = "PRODUCT_GROUP" )
-public class ProductGroup extends BaseDictionary implements Serializable
+@Table( name = "PRODUCT_GROUP_DESC" )
+public class ProductDescGroup extends BaseDictionary implements Serializable
 {
 
     /**
@@ -21,7 +21,7 @@ public class ProductGroup extends BaseDictionary implements Serializable
 
     @ManyToOne
     @JoinColumn( name = "PRODUCT_GROUP_TYPE_CODE", insertable = false, updatable = false )
-    private ProductGroupType productGroupType;
+    private ProductDescGroupType productDescGroupType;
 
     public String getProductGroupTypeCode()
     {
@@ -33,13 +33,13 @@ public class ProductGroup extends BaseDictionary implements Serializable
         this.productGroupTypeCode = productGroupTypeCode;
     }
 
-    public ProductGroupType getProductGroupType()
+    public ProductDescGroupType getProductDescGroupType()
     {
-        return productGroupType;
+        return productDescGroupType;
     }
 
-    public void setProductGroupType( ProductGroupType productGroupType )
+    public void setProductDescGroupType( ProductDescGroupType productDescGroupType )
     {
-        this.productGroupType = productGroupType;
+        this.productDescGroupType = productDescGroupType;
     }
 }
