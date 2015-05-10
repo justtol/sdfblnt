@@ -15,6 +15,9 @@
             <element id="module-output" name="ActiveCRMWebApp" />
           </element>
           <element id="directory" name="lib">
+            <element id="archive" name="ActiveCRMUtils-1.0-SNAPSHOT.jar">
+              <element id="module-output" name="ActiveCRMUtils" />
+            </element>
             <element id="archive" name="ActiveCRMData-1.0-SNAPSHOT.jar">
               <element id="module-output" name="ActiveCRMData" />
             </element>
@@ -71,6 +74,9 @@
             <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.1.1.RELEASE" />
             <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.1.1.RELEASE" />
             <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.1.1.RELEASE" />
+            <element id="library" level="project" name="Maven: org.springframework.data:spring-data-jpa:1.8.0.RELEASE" />
+            <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:1.10.0.RELEASE" />
+            <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.8.5" />
             <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:4.3.9.Final" />
             <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.1.3.GA" />
             <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging-annotations:1.2.0.Beta1" />
@@ -86,7 +92,7 @@
           </element>
         </element>
         <element id="directory" name="META-INF">
-          <element id="file-copy" path="D:\sources\bpm\workspace\ActiveCRM\ActiveCRMWebApp\target/MANIFEST.MF" />
+          <element id="file-copy" path="$PROJECT_DIR$/ActiveCRMWebApp/target/MANIFEST.MF" />
         </element>
         <element id="javaee-facet-resources" facet="ActiveCRMWebApp/web/Web" />
       </root>
@@ -223,6 +229,7 @@
         <module name="ActiveCRMBPM" />
         <module name="ActiveCRMData" />
         <module name="ActiveCRMManagement" />
+        <module name="ActiveCRMUtils" />
         <module name="ActiveCRMWebApp" />
       </profile>
     </annotationProcessing>
@@ -231,6 +238,7 @@
       <module name="ActiveCRMBPM" target="1.8" />
       <module name="ActiveCRMData" target="1.8" />
       <module name="ActiveCRMManagement" target="1.8" />
+      <module name="ActiveCRMUtils" target="1.8" />
       <module name="ActiveCRMWebApp" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -259,6 +267,7 @@
     <file url="file://$PROJECT_DIR$/ActiveCRMBPM" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ActiveCRMData" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ActiveCRMManagement" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ActiveCRMUtils" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ActiveCRMWebApp" charset="UTF-8" />
   </component>
   <component name="EntryPointsManager">
@@ -404,10 +413,11 @@
       <module fileurl="file://$PROJECT_DIR$/ActiveCRMBPM/ActiveCRMBPM.iml" filepath="$PROJECT_DIR$/ActiveCRMBPM/ActiveCRMBPM.iml" />
       <module fileurl="file://$PROJECT_DIR$/ActiveCRMData/ActiveCRMData.iml" filepath="$PROJECT_DIR$/ActiveCRMData/ActiveCRMData.iml" />
       <module fileurl="file://$PROJECT_DIR$/ActiveCRMManagement/ActiveCRMManagement.iml" filepath="$PROJECT_DIR$/ActiveCRMManagement/ActiveCRMManagement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ActiveCRMUtils/ActiveCRMUtils.iml" filepath="$PROJECT_DIR$/ActiveCRMUtils/ActiveCRMUtils.iml" />
       <module fileurl="file://$PROJECT_DIR$/ActiveCRMWebApp/ActiveCRMWebApp.iml" filepath="$PROJECT_DIR$/ActiveCRMWebApp/ActiveCRMWebApp.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="VcsDirectoryMappings">
@@ -741,6 +751,17 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-juli/7.0.55/tomcat-juli-7.0.55-sources.jar!/" />
       </SOURCES>
     </library>
+    <library name="Maven: org.aspectj:aspectjrt:1.8.5">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/aspectj/aspectjrt/1.8.5/aspectjrt-1.8.5.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/aspectj/aspectjrt/1.8.5/aspectjrt-1.8.5-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/aspectj/aspectjrt/1.8.5/aspectjrt-1.8.5-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: org.hibernate.common:hibernate-commons-annotations:4.0.5.Final">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/hibernate/common/hibernate-commons-annotations/4.0.5.Final/hibernate-commons-annotations-4.0.5.Final.jar!/" />
@@ -959,6 +980,28 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot/1.1.6.RELEASE/spring-boot-1.1.6.RELEASE-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.springframework.data:spring-data-commons:1.10.0.RELEASE">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.10.0.RELEASE/spring-data-commons-1.10.0.RELEASE.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.10.0.RELEASE/spring-data-commons-1.10.0.RELEASE-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.10.0.RELEASE/spring-data-commons-1.10.0.RELEASE-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.springframework.data:spring-data-jpa:1.8.0.RELEASE">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/1.8.0.RELEASE/spring-data-jpa-1.8.0.RELEASE.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/1.8.0.RELEASE/spring-data-jpa-1.8.0.RELEASE-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/1.8.0.RELEASE/spring-data-jpa-1.8.0.RELEASE-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.springframework:spring-aop:4.1.1.RELEASE">

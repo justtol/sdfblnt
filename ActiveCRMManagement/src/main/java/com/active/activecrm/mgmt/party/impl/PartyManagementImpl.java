@@ -1,6 +1,8 @@
 package com.active.activecrm.mgmt.party.impl;
 
 import com.active.activecrm.data.dao.party.PartyDAO;
+import com.active.activecrm.data.dao.repositories.PartyRepository;
+import com.active.activecrm.data.entities.BaseEntity;
 import com.active.activecrm.data.entities.party.Party;
 import com.active.activecrm.mgmt.party.PartyManagement;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +19,20 @@ public class PartyManagementImpl implements PartyManagement
     @Autowired
     private PartyDAO partyDAO;
 
-    public Long createParty( Party party  )
+    @Autowired
+    private PartyRepository partyRepository;
+
+    public Party createParty( Party party  )
     {
-        return partyDAO.create( party );
+        return partyRepository.save( party );
+        //return partyDAO.create( party );
     }
 
     public Party getParty( Long id )
     {
-        return partyDAO.findById( id );
+        return partyRepository.findOne( id );
+        //return partyDAO.findById( id );
     }
+
+
 }
