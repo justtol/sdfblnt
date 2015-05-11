@@ -21,6 +21,17 @@ public abstract class BaseEntity implements Serializable
     @Column( name = "UPDATE_USER" )
     protected String updateUser;
 
+    @Column( name = "IS_ACTIVE" )
+    protected Boolean isActive = true;
+
+    public Boolean isActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
     public Date getCreateDate()
     {
         return createDate;
