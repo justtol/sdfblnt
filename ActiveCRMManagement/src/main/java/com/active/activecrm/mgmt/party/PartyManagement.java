@@ -1,5 +1,6 @@
 package com.active.activecrm.mgmt.party;
 
+import com.active.activecrm.data.PagedData;
 import com.active.activecrm.data.entities.party.Party;
 
 import java.util.List;
@@ -10,5 +11,5 @@ public interface PartyManagement
 
     Party getParty( Long id );
 
-    List<Party> searchParties( String key );
+    PagedData<Party> searchParties( String key, Integer offset, Integer limit );
 }

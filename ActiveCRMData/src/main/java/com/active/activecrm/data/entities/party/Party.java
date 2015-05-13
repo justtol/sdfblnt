@@ -99,7 +99,7 @@ public class Party extends BaseEntity implements Serializable
      * ЕжемесЯчный доход общий, руб.
      */
     @Column( name = "MONTHLY_SALARY_FUND" )
-    private double monthlySalaryFund;
+    private Double monthlySalaryFund;
 
     /**
      * Дата начала ведениЯ бизнеса
@@ -522,12 +522,12 @@ public class Party extends BaseEntity implements Serializable
         this.yearRevenue = yearRevenue;
     }
 
-    public double getMonthlySalaryFund()
+    public Double getMonthlySalaryFund()
     {
         return monthlySalaryFund;
     }
 
-    public void setMonthlySalaryFund( double monthlySalaryFund )
+    public void setMonthlySalaryFund( Double monthlySalaryFund )
     {
         this.monthlySalaryFund = monthlySalaryFund;
     }

@@ -11,37 +11,41 @@ Ext.define('ActiveCrmApp.view.main.layout.client.SearchClientCombo', {
 
 
     xtype: 'searchclientcombo',
-
-
+    width: '100%',
 
     items: [
         {
-            xtype: 'combo',
-            //reference: 'parties',
-           // publishes: 'partiescombobox',
-            fieldLabel: 'Искать клиента',
-            displayField: 'name',
-            /*displayTpl: ['<h3>{name}</h3>',
-                '{id}'],*/
-            //anchor: '-15',
+            xtype: 'combobox',
+            width: '100%',
+            //displayField: 'name',
+            tpl: Ext.create('Ext.XTemplate',
+                '<ul class="x-list-plain"><tpl for=".">',
+                '<li role="option" class="x-boundlist-item">' +
+                '<h3>{name}</h3>' +
+                'ИНН: {tin}</li>',
+                '</tpl></ul>'
+            ),
+            // template for the content inside text field
+            displayTpl: Ext.create('Ext.XTemplate',
+                '<tpl for=".">',
+                '{name} (ИНН: {tin})',
+                '</tpl>'
+            ),
+
             store: {
                 type: 'search-parties'
             },
             listConfig: {
-                loadingText: 'Searching...',
-                emptyText: 'No matching posts found.',
+                loadingText: 'Поиск...',
+                emptyText: 'Не найдено.',
 
-                itemSelector: '.search-item',
+                itemSelector: '.search-item'
 
-                // Custom rendering template for each item
-                itemTpl: ['<h3>{name}</h3>',
-                    '{id}']
             },
-            // We're forcing the query to run every time by setting minChars to 0
-            // (default is 4)
             minChars: 3,
             queryParam: 'key',
-            queryMode: 'remote'
+            queryMode: 'remote',
+            pageSize: 10
         }
     ]
 });

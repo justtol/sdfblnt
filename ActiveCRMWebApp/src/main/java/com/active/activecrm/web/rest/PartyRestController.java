@@ -1,5 +1,6 @@
 package com.active.activecrm.web.rest;
 
+import com.active.activecrm.data.PagedData;
 import com.active.activecrm.data.entities.party.Party;
 import com.active.activecrm.mgmt.party.PartyManagement;
 import com.active.activecrm.utils.jpa.JpaUtils;
@@ -17,6 +18,7 @@ import java.util.Map;
 @RestController
 public class PartyRestController
 {
+
     private static Log logger = LogFactory.getLog( PartyRestController.class );
 
     @Autowired
@@ -36,17 +38,21 @@ public class PartyRestController
             return null;
         }
     }
+
     @RequestMapping( value = "/searchParties", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE )
-    public Map<String, Object> searchParties( @RequestParam String key )
+    public PagedData< Party > searchParties( @RequestParam String key, @RequestParam Integer start, @RequestParam Integer limit )
+//    public Map<String, Object> searchParties( @RequestParam String key )
     {
         JpaUtils jpaUtils = new JpaUtils();
         try
         {
-            List<Party> parties = (List<Party>) jpaUtils.cloneObjectAndDetach(partyManagement.searchParties(key));
-            Map<String, Object> map = new HashMap<>();
-            map.put( "data", parties );
+            PagedData< Party > parties = partyManagement.searchParties( key, start, limit );
+            parties = ( PagedData< Party > ) jpaUtils.cloneObjectAndDetach( parties );
+//            Map<String, Object> map = new HashMap<>();
+//            map.put( "data", parties );
 
-            return map;
+//            return map;
+            return parties;
         }
         catch ( IllegalAccessException | InstantiationException e )
         {
