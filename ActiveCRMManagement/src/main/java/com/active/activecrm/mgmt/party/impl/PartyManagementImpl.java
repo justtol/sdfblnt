@@ -34,5 +34,9 @@ public class PartyManagementImpl implements PartyManagement
         //return partyDAO.findById( id );
     }
 
+    public List<Party> searchParties( String key )
+    {
+        return partyRepository.findByNameOrTin( "%" + key.trim().toLowerCase() + "%" );
+    }
 
 }

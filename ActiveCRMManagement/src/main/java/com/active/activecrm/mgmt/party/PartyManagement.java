@@ -2,9 +2,13 @@ package com.active.activecrm.mgmt.party;
 
 import com.active.activecrm.data.entities.party.Party;
 
+import java.util.List;
+
 public interface PartyManagement
 {
-    public Party createParty( Party party  );
+    Party createParty( Party party  );
 
-    public Party getParty( Long id );
+    Party getParty( Long id );
+
+    List<Party> searchParties( String key );
 }

@@ -243,7 +243,7 @@
     </bytecodeTargetLevel>
   </component>
   <component name="CopyrightManager" default="" />
-  <component name="DataSourceManagerImpl" format="xml" hash="942797611">
+  <component name="DataSourceManagerImpl" format="xml" hash="1346875099">
     <data-source source="LOCAL" name="MySQL - activecrm@localhost" uuid="e5129a85-63cf-4e56-88e4-eb36fb6ff673">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

@@ -10,7 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class PartyRestController
@@ -27,6 +29,24 @@ public class PartyRestController
         try
         {
             return ( Party ) jpaUtils.cloneObjectAndDetach( partyManagement.getParty( partyId ) );
+        }
+        catch ( IllegalAccessException | InstantiationException e )
+        {
+            logger.error( "", e );
+            return null;
+        }
+    }
+    @RequestMapping( value = "/searchParties", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE )
+    public Map<String, Object> searchParties( @RequestParam String key )
+    {
+        JpaUtils jpaUtils = new JpaUtils();
+        try
+        {
+            List<Party> parties = (List<Party>) jpaUtils.cloneObjectAndDetach(partyManagement.searchParties(key));
+            Map<String, Object> map = new HashMap<>();
+            map.put( "data", parties );
+
+            return map;
         }
         catch ( IllegalAccessException | InstantiationException e )
         {
