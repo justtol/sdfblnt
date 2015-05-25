@@ -24,8 +24,8 @@ public class PartyRestController
     @Autowired
     private PartyManagement partyManagement;
 
-    @RequestMapping( value = "/getParty", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE )
-    public Party getParty( @RequestParam Long partyId )
+    @RequestMapping( value = "/getParty/{partyId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE )
+    public Party getParty( @PathVariable( "partyId" ) Long partyId )
     {
         JpaUtils jpaUtils = new JpaUtils();
         try

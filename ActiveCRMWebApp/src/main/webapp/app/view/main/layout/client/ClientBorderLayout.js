@@ -27,6 +27,7 @@ Ext.define('ActiveCrmApp.view.main.layout.client.ClientBorderLayout', {
         xtype: 'panel',
         width: Ext.getBody().getViewSize().width / 100 * 40,
         split: true,
+        bodyPadding: 5,
         items: [{
             xtype: 'searchclientpanel'
         }]

@@ -1,5 +1,6 @@
 /**
- * Created by U_M0PQL on 11.05.2015.
+ * TODO there is a bug https://www.sencha.com/forum/showthread.php?291950
+ * Paging toolbar cannot load the next page
  */
 Ext.define('ActiveCrmApp.view.main.layout.client.SearchClientCombo', {
     requires: [
@@ -37,15 +38,19 @@ Ext.define('ActiveCrmApp.view.main.layout.client.SearchClientCombo', {
             },
             listConfig: {
                 loadingText: 'Поиск...',
-                emptyText: 'Не найдено.',
-
-                itemSelector: '.search-item'
+                emptyText: 'Не найдено.' /*,
+                itemSelector: '.search-item'*/
 
             },
             minChars: 3,
             queryParam: 'key',
             queryMode: 'remote',
-            pageSize: 10
+            pageSize: 30,
+            listeners: {
+                select: 'onClientSelect'
+            }
         }
-    ]
+    ],
+
+
 });
