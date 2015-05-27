@@ -1,12 +1,11 @@
-Ext.define('ActiveCrmApp.view.main.layout.client.ClientMainInfoView', {
+Ext.define('ActiveCrmApp.view.main.layout.client.ClientMainInfoPanel', {
     requires: [
         'ActiveCrmApp.model.party.Party'
     ],
 
-    extend: 'Ext.form.Panel',
+    extend: 'Ext.Container',
 
-    xtype: 'clientmaininfoview',
-    reference: 'partyForm',
+    xtype: 'clientmaininfopanel',
 
     dockedItems: [{
         dock: 'left',
