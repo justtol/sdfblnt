@@ -12,4 +12,6 @@ public interface PartyManagement
     Party getParty( Long id );
 
     PagedData<Party> searchParties( String key, Integer offset, Integer limit );
+
+    Party saveParty( Party party );
 }

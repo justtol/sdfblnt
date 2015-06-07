@@ -52,7 +52,7 @@
         <!--<property name="persistenceUnitManager" ref="pum"/>-->
     </bean>
 
-    <jpa:repositories base-package="com.active.activecrm.data.dao.repositories"/>
+    <jpa:repositories base-package="com.active.activecrm.data.dao"/>
 <!--
     <bean id="pum" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
         <property name="persistenceXmlLocation" value="classpath*:/META-INF/persistence.xml"/>

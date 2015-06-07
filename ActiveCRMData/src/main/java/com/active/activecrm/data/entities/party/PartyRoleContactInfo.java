@@ -27,11 +27,15 @@ public class PartyRoleContactInfo extends BaseEntity implements Serializable
     @Column( name = "PARTY_ROLE_CONTACT_INFO_ID" )
     private Long id;
 
+
+    @Column( name = "PARTY_ROLE_REL_ID" )
+    private Long partyRoleRelId;
+
     /**
      * ссылка на party role rel
      */
     @ManyToOne( fetch = FetchType.LAZY )
-    @JoinColumn( name = "PARTY_ROLE_REL_ID" )
+    @JoinColumn( name = "PARTY_ROLE_REL_ID", insertable = false, updatable = false )
     private PartyRoleRel partyRoleRel;
 
     /**
@@ -84,6 +88,16 @@ public class PartyRoleContactInfo extends BaseEntity implements Serializable
     public void setId( Long id )
     {
         this.id = id;
+    }
+
+    public Long getPartyRoleRelId()
+    {
+        return partyRoleRelId;
+    }
+
+    public void setPartyRoleRelId( Long partyRoleRelId )
+    {
+        this.partyRoleRelId = partyRoleRelId;
     }
 
     public PartyRoleRel getPartyRoleRel()

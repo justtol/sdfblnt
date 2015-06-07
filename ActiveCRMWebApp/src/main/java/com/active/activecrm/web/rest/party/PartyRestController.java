@@ -1,4 +1,4 @@
-package com.active.activecrm.web.rest;
+package com.active.activecrm.web.rest.party;
 
 import com.active.activecrm.data.PagedData;
 import com.active.activecrm.data.entities.party.Party;
@@ -9,11 +9,8 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @RestController
 public class PartyRestController
@@ -67,8 +64,22 @@ public class PartyRestController
         Party party = new Party();
         party.setName( name );
         party = partyManagement.createParty( party );
-        return party.getId();
+        return party.getPartyId();
     }
 
-
+    @RequestMapping( value = "/updateParty", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE )
+//    @ResponseStatus(value = HttpStatus.OK)
+    public ResponseEntity<Party> updateParty( @RequestBody Party party )
+    {
+        JpaUtils jpaUtils = new JpaUtils();
+        try
+        {
+            return new ResponseEntity< Party >( ( Party ) jpaUtils.cloneObjectAndDetach( partyManagement.saveParty( party ) ), HttpStatus.OK );
+        }
+        catch ( IllegalAccessException | InstantiationException e )
+        {
+            logger.error( "", e );
+            return null;
+        }
+    }
 }

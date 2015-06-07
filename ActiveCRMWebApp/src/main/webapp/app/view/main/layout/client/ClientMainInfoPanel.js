@@ -1,63 +1,46 @@
 Ext.define('ActiveCrmApp.view.main.layout.client.ClientMainInfoPanel', {
     requires: [
-        'ActiveCrmApp.model.party.Party'
+        'ActiveCrmApp.model.party.Party',
+        'ActiveCrmApp.view.main.layout.client.ClientMainInfoView',
+        'ActiveCrmApp.view.main.layout.client.ClientMainInfoForm',
+        'ActiveCrmApp.view.main.layout.client.ClientMainInfoController',
+        'Ext.button.Button',
+        'Ext.toolbar.Toolbar',
+        'Ext.layout.container.Card'
     ],
 
-    extend: 'Ext.Container',
+    extend: 'Ext.panel.Panel',
+
+    //controller: 'clientmaininfo',
 
     xtype: 'clientmaininfopanel',
+    reference: 'clientmaininfopanel',
+    layout: 'card',
 
     dockedItems: [{
         dock: 'left',
         xtype: 'toolbar',
+        reference: 'clientToolbar',
         items: [{
             iconCls: 'icon-edit',
-            xtype: 'button'
+            xtype: 'button',
+            handler: 'editClientMainInfo'
+
         }]
     }],
 
-    defaults: {
-        xtype: 'displayfield',
-        labelAlign: 'top'
-    },
     items: [
         {
-            fieldLabel: 'Наименование',
-            name: 'name'
+            xtype: 'panel'
         },
         {
-            fieldLabel: 'Город',
-            name: 'city'
+            id: 'clientmaininfoview',
+            xtype: 'clientmaininfoview'
         },
         {
-            fieldLabel: 'ИНН',
-            name: 'tin'
-        },
-        {
-            fieldLabel: 'КПП',
-            name: 'kpp'
-        },
-        {
-            fieldLabel: 'ОГРН',
-            name: 'ogrn'
-        },
-        {
-            xtype: 'fieldset',
-            collapsible: true,
-            title: 'Характеристики',
-            collapsed: true,
-            defaults: {
-                xtype: 'displayfield',
-                labelAlign: 'top'
-            },
-            items: [
-                {
-                    fieldLabel: 'ФОТ',
-                    name: 'fot'
-                }
-            ]
+            id: 'clientmaininfoform',
+            xtype: 'clientmaininfoform'
         }
     ]
-
 
 });

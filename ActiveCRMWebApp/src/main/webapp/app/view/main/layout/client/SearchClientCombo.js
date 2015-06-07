@@ -4,16 +4,15 @@
  */
 Ext.define('ActiveCrmApp.view.main.layout.client.SearchClientCombo', {
     requires: [
-        'ActiveCrmApp.store.party.SearchParties'
+        'ActiveCrmApp.store.party.SearchParties',
+        'Ext.layout.container.HBox'
     ],
 
     extend: 'Ext.panel.Panel',
-    layout: 'anchor',
-
-
+    layout: 'hbox',
+    align: 'stretch',
     xtype: 'searchclientcombo',
     width: '100%',
-
     items: [
         {
             xtype: 'combobox',
@@ -48,9 +47,16 @@ Ext.define('ActiveCrmApp.view.main.layout.client.SearchClientCombo', {
             pageSize: 30,
             listeners: {
                 select: 'onClientSelect'
-            }
+            },
+            flex: 1
+        },
+        {
+            margin: '0px 0px 0px 5px',
+            iconCls: 'icon-add',
+            xtype: 'button',
+            handler: 'addClientMainInfo'
         }
-    ],
+    ]
 
 
 });

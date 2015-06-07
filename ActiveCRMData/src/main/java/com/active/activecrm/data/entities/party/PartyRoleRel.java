@@ -6,6 +6,8 @@ package com.active.activecrm.data.entities.party; /*****************************
 
 import com.active.activecrm.data.entities.BaseEntity;
 import com.active.activecrm.data.entities.dicts.PartyRole;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -63,10 +65,12 @@ public class PartyRoleRel extends BaseEntity implements Serializable
 
     @ManyToOne( fetch = FetchType.LAZY )
     @JoinColumn( name = "FROM_PARTY_ID" )
+    @JsonBackReference
     private Party fromParty;
 
     @ManyToOne( fetch = FetchType.LAZY )
     @JoinColumn( name = "TO_PARTY_ID" )
+    @JsonManagedReference
     private Party toParty;
 
     @OneToMany( fetch = FetchType.LAZY, mappedBy = "partyRoleRel" )

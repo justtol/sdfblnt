@@ -1,3 +1,7 @@
 .icon-edit{
     background: url('./images/icons/vcard_edit.png') no-repeat 0 0;
 }
+
+.icon-add{
+    background: url('./images/icons/vcard_add.png') no-repeat 0 0;
+}

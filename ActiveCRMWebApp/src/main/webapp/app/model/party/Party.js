@@ -6,25 +6,31 @@ Ext.define('ActiveCrmApp.model.party.Party', {
         /* include classes required by this component here */
 
         'Ext.data.reader.Json',
-        'Ext.data.proxy.Rest'
+        'Ext.data.proxy.Rest',
+        'Ext.data.writer.Json'
     ],
 
     extend: 'Ext.data.Model',
 
     /*
-    Uncomment to give this component an xtype
-    xtype: 'party',
-    */
+     Uncomment to give this component an xtype
+     xtype: 'party',
+     */
 
 
-    fields:[
-        {name: 'id',  type: 'int'},
-        {name: 'name',   type: 'string'},
-        {name: 'tin', type: 'string'}
+    fields: [
+        {name: 'partyId', type: 'integer'},
+        {name: 'name', type: 'string'},
+        {name: 'tin', type: 'string'},
+        {name: 'firstName', type: 'string'},
+        {name: 'secondName', type: 'string'},
+        {name: 'lastName', type: 'string'}
+
     ],
 
     proxy: {
         type: 'rest',
+        url: 'data/updateParty',
         api: {
             read: 'data/getParty',
             update: 'data/updateParty'
@@ -32,6 +38,11 @@ Ext.define('ActiveCrmApp.model.party.Party', {
         reader: {
             type: 'json',
             rootProperty: ''
+        },
+        writer: {
+            type: 'json',
+            rootProperty: '',
+            writeAllFields: 'true'
         }
     }
 });

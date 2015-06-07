@@ -3,6 +3,8 @@ package com.active.activecrm.data.entities.party;
 import com.active.activecrm.data.entities.BaseEntity;
 import com.active.activecrm.data.entities.dicts.*;
 import com.active.activecrm.data.entities.products.ProductPartyRoleRel;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,7 +18,7 @@ public class Party extends BaseEntity implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator="partySeq")
     @Column( name = "PARTY_ID" )
-    private Long id;
+    private Long partyId;
 
 
     @Column( name = "OPF_CODE" )
@@ -276,9 +278,11 @@ public class Party extends BaseEntity implements Serializable
 
 
     @OneToMany( fetch = FetchType.LAZY, mappedBy = "fromParty" )
+    @JsonManagedReference
     private Set<PartyRoleRel> fromPartyRoleRels = new HashSet<PartyRoleRel>();
 
     @OneToMany( fetch = FetchType.LAZY, mappedBy = "toParty" )
+    @JsonBackReference
     private Set<PartyRoleRel> toPartyRoleRels = new HashSet<PartyRoleRel>();
 
     @OneToMany( fetch = FetchType.LAZY, mappedBy = "party" )
@@ -330,16 +334,27 @@ public class Party extends BaseEntity implements Serializable
         this.okved = okved;
     }
 
+
     @Override
     public Long getId()
     {
-        return id;
+        return partyId;
     }
 
     @Override
     public void setId( Long id )
     {
-        this.id = id;
+        partyId = id;
+    }
+
+    public Long getPartyId()
+    {
+        return partyId;
+    }
+
+    public void setPartyId( Long id )
+    {
+        this.partyId = id;
     }
 
     public Set< PartySeason > getSeasons()

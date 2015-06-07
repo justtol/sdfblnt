@@ -1,46 +1,46 @@
 Ext.define('ActiveCrmApp.view.main.layout.client.ClientMainInfoView', {
     requires: [
-        'ActiveCrmApp.model.party.Party'
+        'ActiveCrmApp.model.party.Party',
+        'Ext.form.field.Hidden'
     ],
 
     extend: 'Ext.form.Panel',
 
     xtype: 'clientmaininfoview',
-    reference: 'partyForm',
+    reference: 'partyView',
 
-    dockedItems: [{
-        dock: 'left',
-        xtype: 'toolbar',
-        items: [{
-            iconCls: 'icon-edit',
-            xtype: 'button'
-        }]
-    }],
-
-    defaults: {
-        xtype: 'displayfield',
-        labelAlign: 'top'
-    },
     items: [
         {
-            fieldLabel: 'Наименование',
-            name: 'name'
-        },
-        {
-            fieldLabel: 'Город',
-            name: 'city'
-        },
-        {
-            fieldLabel: 'ИНН',
-            name: 'tin'
-        },
-        {
-            fieldLabel: 'КПП',
-            name: 'kpp'
-        },
-        {
-            fieldLabel: 'ОГРН',
-            name: 'ogrn'
+            xtype: 'fieldset',
+            collapsible: false,
+            title: 'Основная информация',
+            collapsed: false,
+            defaults: {
+                xtype: 'displayfield',
+                labelAlign: 'top'
+            },
+            items: [
+                {
+                    fieldLabel: 'Наименование',
+                    name: 'name'
+                },
+                {
+                    fieldLabel: 'Город',
+                    name: 'city'
+                },
+                {
+                    fieldLabel: 'ИНН',
+                    name: 'tin'
+                },
+                {
+                    fieldLabel: 'КПП',
+                    name: 'kpp'
+                },
+                {
+                    fieldLabel: 'ОГРН',
+                    name: 'ogrn'
+                }
+            ]
         },
         {
             xtype: 'fieldset',

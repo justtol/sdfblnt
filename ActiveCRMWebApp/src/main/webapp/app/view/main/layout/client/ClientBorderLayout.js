@@ -1,9 +1,7 @@
-/**
- * Created by U_M0PQL on 11.05.2015.
- */
 Ext.define('ActiveCrmApp.view.main.layout.client.ClientBorderLayout', {
     requires: [
         'ActiveCrmApp.view.main.layout.client.SearchClientPanel',
+        'ActiveCrmApp.view.main.layout.clientcontact.ClientContactPanel',
         'Ext.layout.container.Border'
     ],
 
@@ -11,7 +9,7 @@ Ext.define('ActiveCrmApp.view.main.layout.client.ClientBorderLayout', {
 
     xtype: 'clientborderlayout',
 
-
+    controller: 'searchclient',
     layout: {
         type: 'border'
     },
@@ -37,7 +35,7 @@ Ext.define('ActiveCrmApp.view.main.layout.client.ClientBorderLayout', {
         width: Ext.getBody().getViewSize().width / 100 * 30,
         split: true,
         items: [{
-            html: '<h2>Content appropriate for the current navigation.</h2>'
+            xtype: 'clientcontactpanel'
         }]
     }]
 });

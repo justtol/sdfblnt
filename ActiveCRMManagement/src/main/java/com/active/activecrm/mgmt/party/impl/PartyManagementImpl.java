@@ -2,8 +2,7 @@ package com.active.activecrm.mgmt.party.impl;
 
 import com.active.activecrm.data.PagedData;
 import com.active.activecrm.data.dao.party.PartyDAO;
-import com.active.activecrm.data.dao.repositories.PartyRepository;
-import com.active.activecrm.data.entities.BaseEntity;
+import com.active.activecrm.data.dao.party.PartyRepository;
 import com.active.activecrm.data.entities.party.Party;
 import com.active.activecrm.mgmt.party.PartyManagement;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +32,8 @@ public class PartyManagementImpl implements PartyManagement
 
     public Party getParty( Long id )
     {
-        return partyRepository.findOne( id );
+        //return partyRepository.findOne( id );
+        return partyRepository.loadPartyById( id );
         //return partyDAO.findById( id );
     }
 
@@ -51,6 +51,11 @@ public class PartyManagementImpl implements PartyManagement
             parties = partyRepository.findByNameOrTin( "%" + key.trim().toLowerCase() + "%", new PageRequest( offset, limit ) );
         }
         return new PagedData<>( count, parties );
+    }
+
+    public Party saveParty( Party party )
+    {
+        return partyRepository.save( party );
     }
 
 }
