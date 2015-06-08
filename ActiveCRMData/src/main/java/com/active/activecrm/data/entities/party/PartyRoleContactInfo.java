@@ -8,6 +8,7 @@ package com.active.activecrm.data.entities.party; /**
 
 import com.active.activecrm.data.entities.BaseEntity;
 import com.active.activecrm.data.entities.dicts.ContactInfoType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -36,6 +37,7 @@ public class PartyRoleContactInfo extends BaseEntity implements Serializable
      */
     @ManyToOne( fetch = FetchType.LAZY )
     @JoinColumn( name = "PARTY_ROLE_REL_ID", insertable = false, updatable = false )
+    @JsonBackReference
     private PartyRoleRel partyRoleRel;
 
     /**

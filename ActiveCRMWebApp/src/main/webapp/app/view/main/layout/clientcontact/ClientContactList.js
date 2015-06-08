@@ -8,7 +8,10 @@ Ext.define('ActiveCrmApp.view.main.layout.clientcontact.ClientContactList', {
     store: Ext.data.StoreManager.lookup('clientcontacts'),
     tpl:  new Ext.XTemplate(
         '<tpl for=".">',
-        '<span>{toParty.firstName} {toParty.secondName} {toParty.lastName}</span>',
+            '<div>{toParty.firstName} {toParty.secondName} {toParty.lastName}</div>',
+            '<tpl for="partyRoleContactInfos">',
+                '<div>{typeCode}: {value}</div>',
+            '</tpl>',
         '</tpl>'
     ),
     itemSelector: 'div.thumb-wrap',

@@ -74,6 +74,7 @@ public class PartyRoleRel extends BaseEntity implements Serializable
     private Party toParty;
 
     @OneToMany( fetch = FetchType.LAZY, mappedBy = "partyRoleRel" )
+    @JsonManagedReference
     private Set<PartyRoleContactInfo> partyRoleContactInfos = new HashSet<>();
 
     @Override

@@ -8,7 +8,8 @@ Ext.define('ActiveCrmApp.model.party.PartyRoleContactInfo', {
         {name: 'typeCode', type: 'string'},
         {name: 'value', type: 'string'},
         {name: 'isPrimary', type: 'boolean'},
-        {name: 'isIncorrect', type: 'boolean'}
+        {name: 'isIncorrect', type: 'boolean'},
+        {name: 'partyRoleRelId', type: 'number', reference: 'PartyRoleRel'}
     ]
 
 });
